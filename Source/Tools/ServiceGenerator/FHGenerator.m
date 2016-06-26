@@ -18,6 +18,7 @@
 #import "GTLUtilities.h"
 
 static NSString *kProjectPrefix         = @"GTL";
+static NSString *kPodInstallPrefix      = @"GoogleAPIClient";
 static NSString *kServiceBaseClass      = @"GTLService";
 static NSString *kQueryBaseClass        = @"GTLQuery";
 static NSString *kBaseObjectClass       = @"GTLObject";
@@ -2476,7 +2477,7 @@ static NSString *MappedParamName(NSString *name) {
   [result appendFormat:@"#if %@\n", kFrameworkIncludeGate];
   [result appendFormat:@"  #import \"%@/%@.h\"\n", kProjectPrefix, headerName];
   [result appendString:@"#else\n"];
-  [result appendFormat:@"  #import \"%@.h\"\n", headerName];
+  [result appendFormat:@"  #import \"%@/%@.h\"\n", kPodInstallPrefix, headerName];
   [result appendString:@"#endif\n"];
   return result;
 }
